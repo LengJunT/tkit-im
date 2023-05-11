@@ -1,0 +1,27 @@
+@import "../../style";
+
+.@{prefixCls}-window-switch {
+  &-btn {
+    font-size: 0.5rem;
+    &.close {
+      background-color: #ec695e;
+      border: 1px solid #d26055;
+    }
+    &.min {
+      background-color: #f4bf4f;
+      border: 1px solid #d7a651;
+    }
+    &.full {
+      background-color: #61c554;
+      border: 1px solid #61ad51;
+    }
+  }
+  .anticon {
+    display: none;
+  }
+  &:hover {
+    .anticon {
+      display: inline-block;
+    }
+  }
+}

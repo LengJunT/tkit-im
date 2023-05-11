@@ -1,0 +1,27 @@
+@prefixCls: tkit-im;
+
+.@{prefixCls}-window {
+  @apply container mx-auto rounded-md shadow-lg overflow-hidden fixed ease-in-out;
+  width: 860px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition-property: width, height;
+  transition-duration: 0.5s;
+  &.minimize {
+    height: 0;
+  }
+
+  &.full-screen {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  --primary: #4091ed;
+  --panel-bg: #e5e0df;
+  --panel-tab-color: rgb(114, 112, 111);
+  --panel-tab-active-color: var(--primary);
+}

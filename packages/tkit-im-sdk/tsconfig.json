@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "jsx": "preserve",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "target": "ES2016",
+    "module": "ESNext",
+    "downlevelIteration": true,
+    "declaration": true,
+    "allowJs": true,
+    "outDir": "./lib",
+  },
+  "exclude": [
+    "../../node_modules", "template"]
+}
