@@ -11,7 +11,7 @@ export const setPrefixCls = (str: string) => {
   prefixCls = str
 }
 
-export const usePrefixCls = (cls: string, ...other: Parameters<typeof classNames>): React.HTMLAttributes<HTMLDivElement>['className'] => {
+export const prefixClassNames = (cls: string, ...other: Parameters<typeof classNames>): React.HTMLAttributes<HTMLDivElement>['className'] => {
   return classNames(`${prefixCls}-${cls}`, ...other)
 }
 

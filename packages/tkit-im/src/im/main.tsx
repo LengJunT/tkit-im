@@ -1,5 +1,5 @@
-import { usePrefixCls } from './utils/prefixCls'
-import { Panel } from './compontents'
+import { prefixClassNames } from './utils/prefixCls'
+import {Contacts, Panel} from './compontents'
 import './main.less'
 import { useWindowStore } from './store'
 import React from 'react'
@@ -9,7 +9,7 @@ const WindowBox = (props: {
 }) => {
   const openState = useWindowStore(state => state.openState)
 
-  const rootCls = usePrefixCls('window', {
+  const rootCls = prefixClassNames('window', {
     'minimize': openState === 'minimize',
     'full-screen': openState === 'fullScreen'
   })
@@ -17,13 +17,16 @@ const WindowBox = (props: {
   if (openState === 'closed') return  null
 
   return <div className={rootCls}>
-    {props.children}
+    <div className={prefixClassNames('window-content', 'flex h-full')}>
+      {props.children}
+    </div>
   </div>
 }
 
 const ImWindow = () => {
   return <WindowBox>
     <Panel/>
+    <Contacts />
   </WindowBox>
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Avatar as AntAvatar, AvatarProps as AntAvatarProps } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
-import { usePrefixCls } from '../../utils/prefixCls'
+import { prefixClassNames } from '../../utils/prefixCls'
 
 interface AvatarProps extends Pick<AntAvatarProps, 'size' | 'src' | 'alt'> {
   className?: string
@@ -12,7 +12,7 @@ const Avatar = (props: AvatarProps) => {
     size, src, alt,
     className
   } = props
-  return <div className={usePrefixCls('avatar', className)}>
+  return <div className={prefixClassNames('avatar', className)}>
     <AntAvatar
       className={'flex justify-center items-center'}
       draggable={false}
