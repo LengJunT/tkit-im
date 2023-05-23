@@ -1,5 +1,5 @@
 import { prefixClassNames } from './utils/prefixCls'
-import {Contacts, Panel} from './compontents'
+import {Chat, Contacts, Panel} from './compontents'
 import './main.less'
 import { useWindowStore } from './store'
 import React from 'react'
@@ -27,6 +27,7 @@ const ImWindow = () => {
   return <WindowBox>
     <Panel/>
     <Contacts />
+    <Chat />
   </WindowBox>
 }
 

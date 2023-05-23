@@ -3,14 +3,14 @@ import { Avatar as AntAvatar, AvatarProps as AntAvatarProps } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import { prefixClassNames } from '../../utils/prefixCls'
 
-interface AvatarProps extends Pick<AntAvatarProps, 'size' | 'src' | 'alt'> {
+interface AvatarProps extends Pick<AntAvatarProps, 'size' | 'src' | 'alt' | 'shape'> {
   className?: string
 }
 
 const Avatar = (props: AvatarProps) => {
   const {
     size, src, alt,
-    className
+    className, shape
   } = props
   return <div className={prefixClassNames('avatar', className)}>
     <AntAvatar
@@ -19,7 +19,7 @@ const Avatar = (props: AvatarProps) => {
       size={size}
       src={src}
       alt={alt}
-      shape={'square'}
+      shape={shape ?? 'square'}
       icon={<UserOutlined />}
     />
   </div>

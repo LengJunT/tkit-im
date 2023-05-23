@@ -12,7 +12,10 @@ export const setPrefixCls = (str: string) => {
 }
 
 export const prefixClassNames = (cls: string, ...other: Parameters<typeof classNames>): React.HTMLAttributes<HTMLDivElement>['className'] => {
-  return classNames(`${prefixCls}-${cls}`, ...other)
+  if (cls) {
+    return classNames(`${prefixCls}-${cls}`, ...other)
+  }
+  return classNames(...other)
 }
 
 export default prefixCls
