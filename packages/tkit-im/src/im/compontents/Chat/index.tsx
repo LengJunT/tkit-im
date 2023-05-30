@@ -14,7 +14,7 @@ const Chat = () => {
       </div>
       <MessageContainer />
       <div className={prefixClassNames('chat-edit-container', 'h-[200px]')}>
-          <div className={prefixClassNames('chat-edit-box', 'h-full')} contentEditable={true}></div>
+          <div className={prefixClassNames('chat-edit-box', 'h-full px-4 py-3 outline-0')} contentEditable={true}></div>
       </div>
   </div>
 }
