@@ -1,6 +1,5 @@
 import React from 'react'
 import { prefixClassNames } from '../../utils/prefixCls'
-import { MessageOutlined, TeamOutlined } from '@ant-design/icons'
 import { PanelTabs } from '../../utils/const'
 import classNames from 'classnames'
 import { useWindowStore, WindowStore } from '../../store'

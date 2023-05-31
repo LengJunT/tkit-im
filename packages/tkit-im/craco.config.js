@@ -4,6 +4,15 @@ const { loaderByName } = require('@craco/craco');
 module.exports = function (webpackEnv) {
   const lessModuleRegex = /\.module\.less$/;
   return {
+    devServer: {
+      proxy: {
+        '/api': {
+          target: `http://localhost:3001/`,
+          // changeOrigin: true,
+          pathRewrite: { '^/api': '' },
+        }
+      }
+    },
     plugins: [
       {
         plugin: CracoLessPlugin,

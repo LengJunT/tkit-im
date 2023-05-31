@@ -11,7 +11,7 @@ import { useWindowStore } from '../../store'
 const WindowSwitch = () => {
   const openState = useWindowStore((state) => state.openState)
   const setOpenState = useWindowStore(state => state.setOpenState)
-  const rootCls = prefixClassNames('window-switch', 'flex justify-between w-16 p-1.5')
+  const rootCls = prefixClassNames('window-switch', 'flex justify-between w-16 p-1.5 absolute')
   const btnCls = prefixClassNames('window-switch-btn', 'flex text-center justify-center items-center w-3 h-3 rounded-full')
 
   const onClose = () => {

@@ -1,34 +1,21 @@
 import { prefixClassNames } from './utils/prefixCls'
 import {Chat, Contacts, Panel} from './compontents'
 import './main.less'
-import { useWindowStore } from './store'
+import {useUserStore, useWindowStore} from './store'
 import React, {useEffect} from 'react'
 import { io } from "socket.io-client";
+import Login from './compontents/login'
+import WindowSwitch from './compontents/WindowSwitch'
 
 let socket: any
 const WindowBox = (props: {
   children: React.ReactNode
 }) => {
   const openState = useWindowStore(state => state.openState)
+  const userInfo = useUserStore(state => state.userInfo)
 
   useEffect(() => {
     if (!socket) {
-      fetch('//localhost:3000/sso/login', {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userName: 'user1',
-          password: 'user1'
-        })
-      }).then(res => {
-        return res.json()
-      }).then(res =>
-      console.log(111, res)
-      )
       socket = io('//localhost:3000/')
       // server-side
       socket.on("connection", (s: any) => {
@@ -62,7 +49,10 @@ const WindowBox = (props: {
 
   return <div className={rootCls}>
     <div className={prefixClassNames('window-content', 'flex h-full')}>
-      {props.children}
+      <WindowSwitch />
+      {
+        !userInfo ? <Login /> : props.children
+      }
     </div>
   </div>
 }
