@@ -26,21 +26,30 @@ export class AuthGuard implements CanActivate {
         const request = context.switchToHttp().getRequest();
         const token = this.extractTokenFromHeader(request);
         if (!token) {
-            throw new UnauthorizedException();
+            throw new UnauthorizedException('请登录！');
         }
+
+        let payload
         try {
-            const payload = await this.jwtService.verifyAsync(
+            payload = await this.jwtService.verifyAsync(
                 token,
                 {
                     secret: jwtConstants.secret
                 }
             );
-            // 💡 We're assigning the payload to the request object here
-            // so that we can access it in our route handlers
-            request['user'] = payload;
         } catch {
-            throw new UnauthorizedException();
+            throw new UnauthorizedException('权限验证异常');
         }
+        if (payload.time) {
+            const curTime = new Date().valueOf()
+            if (curTime - payload.time > 60 * 60 * 1000) {
+                throw new UnauthorizedException('登录过期！');
+            }
+        }
+        // 💡 We're assigning the payload to the request object here
+        // so that we can access it in our route handlers
+        request['user'] = payload;
+
         return true;
     }
 

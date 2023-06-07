@@ -8,9 +8,9 @@ const Login = () => {
     const onFinish = (value: any) => {
         console.log('onFinish', value)
         login(value).then(res => {
-            const { accessToken } = res.data
+            const { accessToken } = res.data.data
             localStorage.setItem('token', accessToken)
-            setUserInfo(res.data)
+            setUserInfo(res.data.data)
         })
     }
 
@@ -22,16 +22,16 @@ const Login = () => {
                 wrapperCol={{ span: 16 }}
                 style={{ maxWidth: 300 }}
                 initialValues={{
-                    username: 'user1',
-                    password: 'user1'
+                    account: 'gtx',
+                    password: 'gtx'
                 }}
                 onFinish={onFinish}
                 autoComplete="off"
             >
                 <Form.Item
-                    label="Username"
-                    name="username"
-                    rules={[{ required: true, message: 'Please input your username!' }]}
+                    label="Account"
+                    name="account"
+                    rules={[{ required: true, message: 'Please input your Account!' }]}
                 >
                     <Input />
                 </Form.Item>
