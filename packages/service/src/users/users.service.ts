@@ -54,8 +54,6 @@ const users: UserType[] = [
 
 @Injectable()
 export class UsersService {
-    private readonly users: UserType[];
-
     constructor(
         @InjectRepository(User)
         private usersRepository: Repository<User>,
@@ -72,6 +70,17 @@ export class UsersService {
 
     async findAll(): Promise<User[]> {
         return this.usersRepository.find();
+    }
+
+    async batchFind (userIds: string[]) {
+        const userList = await this.usersRepository
+            .createQueryBuilder('users')
+            .where('users.id IN(...ids)', { ids: userIds})
+            .getMany()
+        return userList.map(item => {
+            const {password, ...other} = item
+            return other
+        })
     }
 
     // findOne(id: number): Promise<User | null> {

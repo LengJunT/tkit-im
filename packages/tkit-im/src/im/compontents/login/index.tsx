@@ -2,6 +2,7 @@ import { Button, Form, Input } from 'antd';
 import {prefixClassNames} from '../../utils/prefixCls'
 import {login} from '../../service'
 import {useUserStore} from '../../store'
+import {useEffect} from 'react'
 
 const Login = () => {
     const setUserInfo = useUserStore(state => state.setUserInfo)
@@ -13,6 +14,13 @@ const Login = () => {
             setUserInfo(res.data.data)
         })
     }
+
+    useEffect(() => {
+        onFinish({
+            account: 'gtx',
+            password: 'gtx'
+        })
+    }, [])
 
     return <div className={prefixClassNames('login', 'flex items-center justify-center w-full')}>
         <div className={prefixClassNames('login-content', '')}>
