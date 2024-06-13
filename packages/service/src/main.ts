@@ -8,6 +8,7 @@ import {Cors} from './lib/cors/cors'
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.useGlobalInterceptors(new RequestInterceptor())
+  app.setGlobalPrefix('api');
   app.useStaticAssets(join(__dirname, '..', 'public'),{
     prefix: '/static/',   //设置虚拟路径
   });
